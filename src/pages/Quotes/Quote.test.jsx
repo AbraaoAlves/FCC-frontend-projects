@@ -27,9 +27,11 @@ test('Within #quote-box, I can see an element with a corresponding id="author".'
   const result = render(<Quote />);
   const wrapper = result.getByTestId('quote-box');
   
-  const author = wrapper.querySelector('#author');
+  
+  const author = wrapper.querySelector('#author') ;
 
   expect(author).toBeInTheDocument();
+  // expect(author).not.toBeEmptyDOMElement();
 });
 
 test('Within #quote-box, I can see a clickable element with a corresponding id="new-quote".', () => {

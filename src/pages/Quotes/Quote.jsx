@@ -13,7 +13,7 @@ export function Quote() {
         {quote.text} 
       </div> 
       <div id="author" data-testid="author">
-        {quote.autor}
+        {quote.author}
       </div>
       <button id="new-quote" data-testid="new-quote" onClick={() => {
         setQuote(getNewQuote(quote.text));
