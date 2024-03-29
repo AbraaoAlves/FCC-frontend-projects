@@ -39,7 +39,7 @@ export function App() {
         const randomIndex = Math.floor(Math.random() * quotes.length)
         setQuote(quotes[randomIndex]);
       }}>
-
+          new quote
       </button>
 
       <a href="https://twitter.com/intent/tweet" target="_blank" id="tweet-quote" data-testid="tweet-quote"> twittar</a>
