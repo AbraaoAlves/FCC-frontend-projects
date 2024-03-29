@@ -1,6 +1,6 @@
 
 import {render, act, fireEvent} from '@testing-library/react'
-import {App} from './App';
+import {App} from './Quote';
 
 test('App can render', () => {
   const result = render(<App />)
