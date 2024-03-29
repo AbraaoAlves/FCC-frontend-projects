@@ -1,11 +1,9 @@
 import './App.css'
 
-function App() {
+export function App() {
   return (
     <>
-      OLA MUNDO
+      Ola mundo
     </>
   )
 }
-
-export default App
