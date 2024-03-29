@@ -1,6 +1,5 @@
-import '@testing-library/jest-dom'
-import {render, act} from '@testing-library/react'
 
+import {render, act, fireEvent} from '@testing-library/react'
 import {App} from './App';
 
 test('App can render', () => {
@@ -8,14 +7,14 @@ test('App can render', () => {
   expect(result.container).toBeInTheDocument();
 });
 
-test('eu consigo ver um elemento wrapper com o id="quote-box" correspondente.', () => {
+test('I can see a wrapper element with a corresponding id="quote-box".', () => {
   const result = render(<App />);
   const wrapper = result.getByTestId('quote-box');
 
   expect(wrapper).toBeInTheDocument();
 });
 
-test('dentro de #quote-box, eu consigo ver um elemento com o id="text" correspondente.', () => {
+test('Within #quote-box, I can see an element with a corresponding id="text".', () => {
   const result = render(<App />);
   const wrapper = result.getByTestId('quote-box');
   
@@ -24,7 +23,7 @@ test('dentro de #quote-box, eu consigo ver um elemento com o id="text" correspon
   expect(text).toBeInTheDocument();
 });
 
-test('dentro de #quote-box, eu consigo ver um elemento com o id="author" correspondente.', () => {
+test('Within #quote-box, I can see an element with a corresponding id="author".', () => {
   const result = render(<App />);
   const wrapper = result.getByTestId('quote-box');
   
@@ -33,7 +32,7 @@ test('dentro de #quote-box, eu consigo ver um elemento com o id="author" corresp
   expect(author).toBeInTheDocument();
 });
 
-test('dentro de #quote-box, eu consigo ver um elemento clicável com o id="new-quote" correspondente.', () => {
+test('Within #quote-box, I can see a clickable element with a corresponding id="new-quote".', () => {
   const result = render(<App />);
   const wrapper = result.getByTestId('quote-box');
   
@@ -42,7 +41,7 @@ test('dentro de #quote-box, eu consigo ver um elemento clicável com o id="new-q
   expect(newQuote).toBeInTheDocument();
 });
 
-test('dentro de #quote-box, eu consigo ver um elemento clicável a com o id="tweet-quote" correspondente.', () => {
+test('Within #quote-box, I can see a clickable a element with a corresponding id="tweet-quote".', () => {
   const result = render(<App />);
   const wrapper = result.getByTestId('quote-box');
   
@@ -51,7 +50,7 @@ test('dentro de #quote-box, eu consigo ver um elemento clicável a com o id="twe
   expect(tweetQuote).toBeInTheDocument();
 });
 
-test('ao carregar pela primeira vez, minha máquina de citação exibe uma citação aleatória no elemento com id="text"', () => {
+test('On first load, my quote machine displays a random quote in the element with id="text".', () => {
   const result = render(<App />);
   const text = result.getByTestId('text');
 
@@ -59,7 +58,7 @@ test('ao carregar pela primeira vez, minha máquina de citação exibe uma cita�
   expect(text.textContent).not.toBe('');
 })
 
-test('ao carregar pela primeira vez, minha máquina de citação exibe o autor da citação aleatória no elemento com id="author".', () => {
+test('On first load, my quote machine displays the random quote\'s author in the element with id="author".', () => {
   const result = render(<App />);
   const author = result.getByTestId('author');
 
@@ -67,31 +66,31 @@ test('ao carregar pela primeira vez, minha máquina de citação exibe o autor d
   expect(author.textContent).not.toBe('');
 })
 
-test('quando o botão #new-quote é clicado, minha máquina de citação deve buscar uma nova citação e exibi-la no elemento #text.', () => {
+test('When the #new-quote button is clicked, my quote machine should fetch a new quote and display it in the #text element.', () => {
   const result = render(<App />);
   const newQuote = result.getByTestId('new-quote');
   const text = result.getByTestId('text');
 
   const firstText = text.textContent;
 
-  act(() => newQuote.click());
+  act(() => fireEvent.click(newQuote));
 
   expect(text.textContent).not.toBe(firstText);
 });
 
-test('minha máquina de citação deve buscar o novo autor da citação quando o botão #new-quote for clicado e o exibir no elemento #author.', () => {
+test(' My quote machine should fetch the new quote\'s author when the #new-quote button is clicked and display it in the #author element.', () => {
   const result = render(<App />);
   const newQuote = result.getByTestId('new-quote');
   const author = result.getByTestId('author');
 
   const firstAuthor = author.textContent;
 
-  act(() => newQuote.click());
+  act(() => fireEvent.click(newQuote));
 
   expect(author.textContent).not.toBe(firstAuthor);
 });
 
-test('eu posso tweetar a citação atual ao clicar no elemento #tweet-quote a. Esse elemento a deve incluir o caminho "twitter.com/intent/tweet" no seu atributo href para tweetar a citação atual.', () => {
+test('I can tweet the current quote by clicking on the #tweet-quote a element. This a element should include the "twitter.com/intent/tweet" path in its href attribute to tweet the current quote.', () => {
   const result = render(<App />);
   const tweetQuote = result.getByTestId('tweet-quote');
 
@@ -101,19 +100,19 @@ test('eu posso tweetar a citação atual ao clicar no elemento #tweet-quote a. E
 })
 
 
-test('quando o botão #new-quote é clicado, minha máquina de citação deve buscar uma nova citação e exibi-la no elemento #text.', () => {
+test('When the #new-quote button is clicked, my quote machine should fetch a new quote and display it in the #text element.', () => {
   const result = render(<App />);
   const newQuote = result.getByTestId('new-quote');
   const text = result.getByTestId('text');
 
   const firstText = text.textContent;
 
-  act(() => newQuote.click());
-  const secondText = text.textContent;
+  act(() => fireEvent.click(newQuote));
 
-  expect(text.textContent).not.toBe(firstText);
+  const secondText = text.textContent;
   
-  act(() => newQuote.click());
+  expect(text.textContent).not.toBe(firstText);
+  act(() => fireEvent.click(newQuote));
   
   expect(text.textContent).not.toBe(secondText);
 });
