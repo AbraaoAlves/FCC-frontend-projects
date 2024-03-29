@@ -1,29 +1,6 @@
-export const quotes = [
-  {
-    text: 'conteudo da citação',
-    autor: 'autor do citação'
-  },
-  {
-    text: 'conteudo da citação1',
-    autor: 'autor do citação1'
-  },
-  {
-    text: 'conteudo da citação2',
-    autor: 'autor do citação2'
-  },
-  {
-    text: 'conteudo da citação3',
-    autor: 'autor do citação3'
-  },
-  {
-    text: 'conteudo da citação4',
-    autor: 'autor do citação3'
-  },
-  {
-    text: 'conteudo da citação5',
-    autor: 'autor do citação3'
-  }
-]
+import {data} from './quotes.json';
+
+export const quotes = data.map(({quote: text, author}) => ({text, author}));
 
 /**
  * 
