@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getNewQuote, quotes } from '../../components/quotes';
+import { getNewQuote, quotes } from './quotes';
 
 const initQuote = quotes[0];
 
