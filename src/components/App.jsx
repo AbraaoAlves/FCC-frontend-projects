@@ -18,10 +18,10 @@ export function App() {
       <button id="new-quote" data-testid="new-quote" onClick={() => {
         setQuote(getNewQuote(quote.text));
       }}>
-          new quote
+          New Quote
       </button>
 
-      <a href="https://twitter.com/intent/tweet" target="_blank" id="tweet-quote" data-testid="tweet-quote"> twittar</a>
+      <a href="https://twitter.com/intent/tweet" target="_blank" id="tweet-quote" data-testid="tweet-quote"> Tweet this quote</a>
     </div>
   )
 }
