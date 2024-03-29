@@ -1,29 +1,9 @@
 import { useState } from 'react';
+import { getNewQuote, quotes } from './quotes';
 import './App.css'
 
-const quotes = [
-  {
-    text: 'conteudo da citação',
-    autor: 'autor do citação'
-  },
-  {
-    text: 'conteudo da citação1',
-    autor: 'autor do citação1'
-  },
-  {
-    text: 'conteudo da citação2',
-    autor: 'autor do citação2'
-  },
-  {
-    text: 'conteudo da citação3',
-    autor: 'autor do citação3'
-  }
-]
+const initQuote = quotes[0];
 
-const initQuote = {
-  text: 'conteudo da citação',
-  autor: 'autor do citação'
-}
 export function App() {
   const [quote, setQuote] = useState(initQuote);
 
@@ -36,8 +16,7 @@ export function App() {
         {quote.autor}
       </div>
       <button id="new-quote" data-testid="new-quote" onClick={() => {
-        const randomIndex = Math.floor(Math.random() * quotes.length)
-        setQuote(quotes[randomIndex]);
+        setQuote(getNewQuote(quote.text));
       }}>
           new quote
       </button>
@@ -46,3 +25,4 @@ export function App() {
     </div>
   )
 }
+

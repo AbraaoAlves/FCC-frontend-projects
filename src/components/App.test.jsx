@@ -106,13 +106,11 @@ test('When the #new-quote button is clicked, my quote machine should fetch a new
   const text = result.getByTestId('text');
 
   const firstText = text.textContent;
-
   act(() => fireEvent.click(newQuote));
 
   const secondText = text.textContent;
-  
-  expect(text.textContent).not.toBe(firstText);
   act(() => fireEvent.click(newQuote));
   
+  expect(firstText).not.toBe(secondText);
   expect(text.textContent).not.toBe(secondText);
 });
