@@ -1,21 +1,21 @@
 
 import {render, act, fireEvent} from '@testing-library/react'
-import {App} from './Quote';
+import {Quote} from './Quote';
 
 test('App can render', () => {
-  const result = render(<App />)
+  const result = render(<Quote />)
   expect(result.container).toBeInTheDocument();
 });
 
 test('I can see a wrapper element with a corresponding id="quote-box".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const wrapper = result.getByTestId('quote-box');
 
   expect(wrapper).toBeInTheDocument();
 });
 
 test('Within #quote-box, I can see an element with a corresponding id="text".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const wrapper = result.getByTestId('quote-box');
   
   const text = wrapper.querySelector('#text');
@@ -24,7 +24,7 @@ test('Within #quote-box, I can see an element with a corresponding id="text".', 
 });
 
 test('Within #quote-box, I can see an element with a corresponding id="author".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const wrapper = result.getByTestId('quote-box');
   
   const author = wrapper.querySelector('#author');
@@ -33,7 +33,7 @@ test('Within #quote-box, I can see an element with a corresponding id="author".'
 });
 
 test('Within #quote-box, I can see a clickable element with a corresponding id="new-quote".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const wrapper = result.getByTestId('quote-box');
   
   const newQuote = wrapper.querySelector('button#new-quote');
@@ -42,7 +42,7 @@ test('Within #quote-box, I can see a clickable element with a corresponding id="
 });
 
 test('Within #quote-box, I can see a clickable a element with a corresponding id="tweet-quote".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const wrapper = result.getByTestId('quote-box');
   
   const tweetQuote = wrapper.querySelector('a#tweet-quote');
@@ -51,7 +51,7 @@ test('Within #quote-box, I can see a clickable a element with a corresponding id
 });
 
 test('On first load, my quote machine displays a random quote in the element with id="text".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const text = result.getByTestId('text');
 
   expect(text).toBeInTheDocument();
@@ -59,7 +59,7 @@ test('On first load, my quote machine displays a random quote in the element wit
 })
 
 test('On first load, my quote machine displays the random quote\'s author in the element with id="author".', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const author = result.getByTestId('author');
 
   expect(author).toBeInTheDocument();
@@ -67,7 +67,7 @@ test('On first load, my quote machine displays the random quote\'s author in the
 })
 
 test('When the #new-quote button is clicked, my quote machine should fetch a new quote and display it in the #text element.', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const newQuote = result.getByTestId('new-quote');
   const text = result.getByTestId('text');
 
@@ -79,7 +79,7 @@ test('When the #new-quote button is clicked, my quote machine should fetch a new
 });
 
 test(' My quote machine should fetch the new quote\'s author when the #new-quote button is clicked and display it in the #author element.', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const newQuote = result.getByTestId('new-quote');
   const author = result.getByTestId('author');
 
@@ -91,7 +91,7 @@ test(' My quote machine should fetch the new quote\'s author when the #new-quote
 });
 
 test('I can tweet the current quote by clicking on the #tweet-quote a element. This a element should include the "twitter.com/intent/tweet" path in its href attribute to tweet the current quote.', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const tweetQuote = result.getByTestId('tweet-quote');
 
   expect(tweetQuote).toBeInTheDocument();
@@ -101,7 +101,7 @@ test('I can tweet the current quote by clicking on the #tweet-quote a element. T
 
 
 test('When the #new-quote button is clicked, my quote machine should fetch a new quote and display it in the #text element.', () => {
-  const result = render(<App />);
+  const result = render(<Quote />);
   const newQuote = result.getByTestId('new-quote');
   const text = result.getByTestId('text');
 

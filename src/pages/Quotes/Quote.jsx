@@ -3,7 +3,8 @@ import { getNewQuote, quotes } from '../../components/quotes';
 
 const initQuote = quotes[0];
 
-export function App() {
+export default Quote;
+export function Quote() {
   const [quote, setQuote] = useState(initQuote);
 
   return (

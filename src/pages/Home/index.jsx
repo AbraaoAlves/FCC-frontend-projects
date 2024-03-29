@@ -1,9 +1,9 @@
 import {Suspense, lazy} from 'react';
 
-const Home = lazy(() => import('./Home'));
+const HomePage = lazy(() => import('./Home'));
 
-export default () => (
+export const Home = () => (
   <Suspense fallback={<div>Loading...</div>}>
-    <Home />
+    <HomePage />
   </Suspense>
 );

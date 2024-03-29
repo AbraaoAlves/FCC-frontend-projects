@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-export default function Home(){
+export default Home;
+export function Home(){
   return (
     <div>
        <nav>
@@ -9,7 +10,7 @@ export default function Home(){
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/random-quotes">Random Quote Machine</Link>
+            <Link to="/quotes">Random Quote Machine</Link>
           </li>
         </ul>
       </nav>
