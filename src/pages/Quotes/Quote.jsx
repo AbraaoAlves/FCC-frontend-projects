@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getNewQuote, quotes } from './utils';
+import { Box, BoxAuthor, BoxButton, BoxText } from '../../components/Box';
 
 const initQuote = quotes[0];
 
@@ -8,21 +9,21 @@ export function Quote() {
   const [quote, setQuote] = useState(initQuote);
 
   return (
-    <div id="quote-box" data-testid="quote-box">
-      <div id="text" data-testid="text">
+    <Box id="quote-box" data-testid="quote-box">
+      <BoxText id="text" data-testid="text">
         {quote.text} 
-      </div> 
-      <div id="author" data-testid="author">
+      </BoxText> 
+      <BoxAuthor id="author" data-testid="author">
         {quote.author}
-      </div>
-      <button id="new-quote" data-testid="new-quote" onClick={() => {
+      </BoxAuthor>
+      <BoxButton id="new-quote" data-testid="new-quote" onClick={() => {
         setQuote(getNewQuote(quote.text));
       }}>
           New Quote
-      </button>
+      </BoxButton>
 
       <a href="https://twitter.com/intent/tweet" target="_blank" id="tweet-quote" data-testid="tweet-quote"> Tweet this quote</a>
-    </div>
+    </Box>
   )
 }
 
