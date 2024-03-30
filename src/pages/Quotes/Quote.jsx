@@ -22,7 +22,7 @@ export function Quote() {
           New Quote
       </BoxButton>
 
-      <a href="https://twitter.com/intent/tweet" target="_blank" id="tweet-quote" data-testid="tweet-quote"> Tweet this quote</a>
+      <a href={quote.twittLink} target="_blank" id="tweet-quote" data-testid="tweet-quote"> Tweet this quote</a>
     </Box>
   )
 }

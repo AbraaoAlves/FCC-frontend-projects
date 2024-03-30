@@ -1,6 +1,10 @@
 import {data} from './quotes.json';
 
-export const quotes = data.map(({quote: text, author}) => ({text, author}));
+export const quotes = data.map(({quote: text, author}) => ({
+  text, 
+  author,
+  twittLink: `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${encodeURIComponent(`${text}  ${author}`)}`
+}));
 
 /**
  * 
