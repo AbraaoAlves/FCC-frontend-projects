@@ -1,4 +1,3 @@
-
 import {render, act, fireEvent} from '@testing-library/react'
 import {Quote} from './Quote';
 
@@ -31,7 +30,7 @@ test('Within #quote-box, I can see an element with a corresponding id="author".'
   const author = wrapper.querySelector('#author') ;
 
   expect(author).toBeInTheDocument();
-  // expect(author).not.toBeEmptyDOMElement();
+  expect(author).not.toBeEmptyDOMElement();
 });
 
 test('Within #quote-box, I can see a clickable element with a corresponding id="new-quote".', () => {
@@ -101,8 +100,7 @@ test('I can tweet the current quote by clicking on the #tweet-quote a element. T
   expect(tweetQuote).toHaveAttribute('href', 'https://twitter.com/intent/tweet');
 })
 
-
-test('When the #new-quote button is clicked, my quote machine should fetch a new quote and display it in the #text element.', () => {
+test('When the #new-quote button is clicked twice, my quote machine should fetch different quotes and display it in the #text element.', () => {
   const result = render(<Quote />);
   const newQuote = result.getByTestId('new-quote');
   const text = result.getByTestId('text');
