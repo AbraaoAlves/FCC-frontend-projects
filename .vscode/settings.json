@@ -1,7 +1,11 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
   "vitest.enable": true,
   "vitest.watchOnStartup": true,
   "vitest.showFailMessages": false,
   "vitest.commandLine": "npx vitest",
+
   "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -8,7 +8,8 @@
     "test": "vitest",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky || true"
   },
   "engines": {
     "node": ">=20"
@@ -32,9 +33,20 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vitest-globals": "^1.5.0",
     "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vitest": "^1.4.0"
+  },
+  "lint-staged": {
+    "*.{json,js,ts,jsx,tsx,html}": [
+      "npx prettier --write --ignore-unknown",
+      "npx eslint",
+      "npx vitest related --run"
+    ]
   }
 }
