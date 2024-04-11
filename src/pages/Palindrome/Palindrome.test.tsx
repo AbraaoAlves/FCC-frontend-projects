@@ -1,4 +1,5 @@
 import { act, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Palindrome from "./Palindrome";
 
 describe("Palindrome", () => {
@@ -25,13 +26,27 @@ describe("Palindrome", () => {
     expect(result?.id).toBe("result");
   });
   it('When you click on the #check-btn element without entering a value into the #text-input element, an alert should appear with the text "Please input a value"', () => {
+    // spy on window.alert
     const alertSpy = vi.spyOn(window, "alert");
     render(<Palindrome />);
+
     const checkBtn = screen.getByRole("button");
 
     act(() => checkBtn.click());
 
     expect(alertSpy).toHaveBeenCalledWith("Please input a value");
+  });
+  it("When the #text-input element only contains the letter A and the #check-btn element is clicked, an alert should not appear", () => {
+    // spy on window.alert
+    const alertSpy = vi.spyOn(window, "alert");
+    render(<Palindrome />);
+
+    act(() => {
+      userEvent.type(screen.getByRole("textbox"), "A");
+      screen.getByRole("button").click();
+    });
+
+    expect(alertSpy).not.toHaveBeenCalledWith();
   });
   it.todo(
     'When the #text-input element only contains the letter A and the #check-btn element is clicked, the #result element should contain the text "A is a palindrome"',
