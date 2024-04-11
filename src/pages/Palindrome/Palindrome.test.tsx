@@ -17,7 +17,13 @@ describe("Palindrome", () => {
     expect(checkBtn).not.toBeNull();
     expect(checkBtn?.id).toBe("check-btn");
   });
-  it.todo('You should have a div element with an id of "result"');
+  it('You should have a div element with an id of "result"', () => {
+    render(<Palindrome />);
+    const result = screen.getByTestId("result");
+
+    expect(result).not.toBeNull();
+    expect(result?.id).toBe("result");
+  });
   it.todo(
     'When you click on the #check-btn element without entering a value into the #text-input element, an alert should appear with the text "Please input a value"',
   );
