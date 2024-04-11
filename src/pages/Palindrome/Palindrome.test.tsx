@@ -1,5 +1,15 @@
+import { render, screen } from "@testing-library/react";
+import Palindrome from "./Palindrome";
+
 describe("Palindrome", () => {
-  it.todo('You should have an input element with an id of "text-input"');
+  it('You should have an input element with an id of "text-input"', () => {
+    render(<Palindrome />);
+    const textInput = screen.getByRole("textbox");
+
+    expect(textInput).not.toBeNull();
+    expect(textInput?.id).toBe("text-input");
+  });
+
   it.todo('You should have a button element with an id of "check-btn"');
   it.todo('You should have a div element with an id of "result"');
   it.todo(
