@@ -5,6 +5,7 @@ export default function Palindrome() {
       <section>
         Enter in text to check for a palindrome:
         <input type="text" id="text-input" />
+        <button id="check-btn">Check</button>
       </section>
     </>
   );
