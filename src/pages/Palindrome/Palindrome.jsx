@@ -5,7 +5,12 @@ export default function Palindrome() {
       <section>
         Enter in text to check for a palindrome:
         <input type="text" id="text-input" />
-        <button id="check-btn">Check</button>
+        <button
+          id="check-btn"
+          onClick={() => window.alert("Please input a value")}
+        >
+          Check
+        </button>
         <div id="result" data-testid="result"></div>
       </section>
     </>
