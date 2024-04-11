@@ -25,12 +25,13 @@ describe("Palindrome", () => {
     expect(result?.id).toBe("result");
   });
   it('When you click on the #check-btn element without entering a value into the #text-input element, an alert should appear with the text "Please input a value"', () => {
+    const alertSpy = vi.spyOn(window, "alert");
     render(<Palindrome />);
     const checkBtn = screen.getByRole("button");
 
     act(() => checkBtn.click());
 
-    expect(window.alert).toHaveBeenCalledWith("Please input a value");
+    expect(alertSpy).toHaveBeenCalledWith("Please input a value");
   });
   it.todo(
     'When the #text-input element only contains the letter A and the #check-btn element is clicked, the #result element should contain the text "A is a palindrome"',
