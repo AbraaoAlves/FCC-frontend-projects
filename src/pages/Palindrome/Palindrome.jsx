@@ -27,9 +27,7 @@ export default function Palindrome() {
           Check
         </button>
         <div id="result" data-testid="result">
-          {isPalindrome
-            ? text + " is a palindrome"
-            : text + " is not a palindrome"}
+          {text + (isPalindrome ? " is a palindrome" : " is not a palindrome")}
         </div>
       </section>
     </>
