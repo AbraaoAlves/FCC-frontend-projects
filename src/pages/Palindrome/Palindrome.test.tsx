@@ -36,32 +36,39 @@ describe("Palindrome", () => {
 
     expect(alertSpy).toHaveBeenCalledWith("Please input a value");
   });
-  it("When the #text-input element only contains the letter A and the #check-btn element is clicked, an alert should not appear", async () => {
-    const user = userEvent.setup();
-    // spy on window.alert
-    const alertSpy = vi.spyOn(window, "alert");
-    render(<Palindrome />);
+  describe("When the #text-input element only contains the letter A and the #check-btn element is clicked, ", () => {
+    it(" an alert should not appear", async () => {
+      const user = userEvent.setup();
+      // spy on window.alert
+      const alertSpy = vi.spyOn(window, "alert");
+      render(<Palindrome />);
 
-    await act(() => user.type(screen.getByRole("textbox"), "A"));
-    act(() => screen.getByRole("button").click());
+      const textInput = screen.getByRole("textbox");
+      const checkBtn = screen.getByRole("button");
 
-    expect(alertSpy).not.toHaveBeenCalledWith();
-  });
+      await act(async () => {
+        await user.type(textInput, "A");
+        await user.click(checkBtn);
+      });
 
-  it('When the #text-input element only contains the letter A and the #check-btn element is clicked, the #result element should contain the text "A is a palindrome"', async () => {
-    const user = userEvent.setup();
-    render(<Palindrome />);
-
-    const textInput = screen.getByRole("textbox");
-    const checkBtn = screen.getByRole("button");
-
-    await act(async () => {
-      await user.type(textInput, "A");
-      await user.click(checkBtn);
+      expect(alertSpy).not.toHaveBeenCalledWith();
     });
 
-    const result = screen.getByTestId("result");
-    expect(result.textContent).toBe("A is a palindrome");
+    it(' the #result element should contain the text "A is a palindrome"', async () => {
+      const user = userEvent.setup();
+      render(<Palindrome />);
+
+      const textInput = screen.getByRole("textbox");
+      const checkBtn = screen.getByRole("button");
+
+      await act(async () => {
+        await user.type(textInput, "A");
+        await user.click(checkBtn);
+      });
+
+      const result = screen.getByTestId("result");
+      expect(result.textContent).toBe("A is a palindrome");
+    });
   });
 
   it.todo(
