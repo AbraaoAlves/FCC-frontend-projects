@@ -71,6 +71,30 @@ describe("Palindrome", () => {
     },
   );
 
+  it.each([["not a palindrome", "not a palindrome is not a palindrome"]])(
+    'When the #text-input element contains the text %s and the #check-btn element is clicked, the #result element should contain the text "%s is not a palindrome"',
+    async (typed, expected) => {
+      const user = userEvent.setup();
+      // const alertSpy = vi.spyOn(window, "alert");
+
+      render(<Palindrome />);
+
+      const textInput = screen.getByRole<HTMLInputElement>("textbox");
+      const checkBtn = screen.getByRole("button");
+
+      await act(async () => {
+        await user.type(textInput, typed);
+        await user.click(checkBtn);
+        console.log("after click: ", textInput.value);
+      });
+
+      const result = screen.getByTestId("result");
+      screen.debug();
+      console.log("result", result.textContent);
+      expect(result.textContent).toBe(expected);
+    },
+  );
+
   it.todo(
     'When the #text-input element contains the text not a palindrome and the #check-btn element is clicked, the #result element should contain the text "not a palindrome is not a palindrome"',
   );
