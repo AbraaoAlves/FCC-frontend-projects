@@ -5,8 +5,8 @@ export default function Palindrome() {
   const [isPalindrome, setIsPalindrome] = useState(false);
 
   const handleCheck = () => {
-    const isEqual =
-      inputref.current?.value === "A" || inputref.current?.value === "eye";
+    const value = inputref.current?.value ?? "";
+    const isEqual = value === "A" || value === "eye";
 
     setIsPalindrome(isEqual);
 
