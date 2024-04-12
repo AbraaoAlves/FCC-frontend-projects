@@ -86,9 +86,22 @@ describe("Palindrome", () => {
     const result = screen.getByTestId("result");
     expect(result.textContent).toBe("eye is a palindrome");
   });
-  it.todo(
-    'When the #text-input element contains the text _eye and the #check-btn element is clicked, the #result element should contain the text "_eye is a palindrome"',
-  );
+
+  it('When the #text-input element contains the text _eye and the #check-btn element is clicked, the #result element should contain the text "_eye is a palindrome"', async () => {
+    const user = userEvent.setup();
+    render(<Palindrome />);
+
+    const textInput = screen.getByRole("textbox");
+    const checkBtn = screen.getByRole("button");
+
+    await act(async () => {
+      await user.type(textInput, "_eye");
+      await user.click(checkBtn);
+    });
+
+    const result = screen.getByTestId("result");
+    expect(result.textContent).toBe("_eye is a palindrome");
+  });
   it.todo(
     'When the #text-input element contains the text race car and the #check-btn element is clicked, the #result element should contain the text "race car is a palindrome"',
   );

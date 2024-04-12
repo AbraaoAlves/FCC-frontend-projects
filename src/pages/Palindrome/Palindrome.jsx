@@ -6,9 +6,10 @@ export default function Palindrome() {
 
   const handleCheck = () => {
     const value = inputref.current?.value ?? "";
-
+    const valueToCompare = value.replace(/_/g, "");
     const isEqual =
-      value.length > 0 && value === value.split("").reverse().join("");
+      valueToCompare.length > 0 &&
+      valueToCompare === valueToCompare.split("").reverse().join("");
 
     setIsPalindrome(isEqual);
 
