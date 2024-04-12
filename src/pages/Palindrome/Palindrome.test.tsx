@@ -42,6 +42,10 @@ describe("Palindrome", () => {
     ["eye", "eye is a palindrome"],
     ["_eye", "_eye is a palindrome"],
     ["race car", "race car is a palindrome"],
+    [
+      "A man, a plan, a canal. Panama",
+      "A man, a plan, a canal. Panama is a palindrome",
+    ],
   ])(
     'When the #text-input element contains the text %s and the #check-btn element is clicked, the #result element should contain the text "%s is a palindrome"',
     async (typed, expected) => {
@@ -67,9 +71,7 @@ describe("Palindrome", () => {
   it.todo(
     'When the #text-input element contains the text not a palindrome and the #check-btn element is clicked, the #result element should contain the text "not a palindrome is not a palindrome"',
   );
-  it.todo(
-    'When the #test-input element contains the text A man, a plan, a canal. Panama and the #check-btn element is clicked, the #result element should contain the text "A man, a plan, a canal. Panama is a palindrome"',
-  );
+
   it.todo(
     'When the #text-input element contains the text never odd or even and the #check-btn element is clicked, the #result element should contain the text "never odd or even is a palindrome"',
   );
