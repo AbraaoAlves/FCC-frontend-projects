@@ -5,11 +5,7 @@ export default function Palindrome() {
   const [isPalindrome, setIsPalindrome] = useState(false);
 
   const handleCheck = () => {
-    const value = inputref.current?.value ?? "";
-    const valueToCompare = value.replace(/_/g, "");
-    const isEqual =
-      valueToCompare.length > 0 &&
-      valueToCompare === valueToCompare.split("").reverse().join("");
+    const isEqual = checkIsPalindrome(inputref.current?.value);
 
     setIsPalindrome(isEqual);
 
@@ -33,5 +29,18 @@ export default function Palindrome() {
         </div>
       </section>
     </>
+  );
+}
+
+/**
+ *
+ * @param {string} [value='']
+ * @returns {boolean}
+ */
+function checkIsPalindrome(value = "") {
+  const valueToCompare = value.replace(/_/g, "");
+  return (
+    valueToCompare.length > 0 &&
+    valueToCompare === valueToCompare.split("").reverse().join("")
   );
 }
