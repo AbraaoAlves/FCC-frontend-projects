@@ -14,6 +14,15 @@ export function checkIsPalindrome(value = "") {
 
   return (
     valueToCompare.length > 0 &&
-    valueToCompare === valueToCompare.split("").reverse().join("")
+    valueToCompare === getPalindrome(valueToCompare)
   );
+}
+
+/**
+ *
+ * @param {string} [value = '']
+ * @returns {string}
+ */
+export function getPalindrome(value = "") {
+  return value.split("").reverse().join("");
 }
