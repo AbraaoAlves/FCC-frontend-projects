@@ -1,16 +1,18 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Palindrome() {
   const inputref = useRef(/** @type {HTMLInputElement | null} */ (null));
+  const [isPalindrome, setIsPalindrome] = useState(false);
 
   const handleCheck = () => {
-    const isPalindrome = inputref.current?.value === "A";
+    const isPalindrome1 = inputref.current?.value === "A";
 
-    if (!isPalindrome) {
+    setIsPalindrome(isPalindrome1);
+
+    if (!isPalindrome1) {
       window.alert("Please input a value");
     }
   };
-
   return (
     <>
       <h1>Palindrome</h1>
@@ -20,7 +22,11 @@ export default function Palindrome() {
         <button id="check-btn" onClick={handleCheck}>
           Check
         </button>
-        <div id="result" data-testid="result"></div>
+        <div id="result" data-testid="result">
+          {isPalindrome
+            ? inputref.current?.value + " is a palindrome"
+            : "Is not a palindrome"}
+        </div>
       </section>
     </>
   );
