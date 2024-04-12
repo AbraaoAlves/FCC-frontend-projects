@@ -71,11 +71,16 @@ describe("Palindrome", () => {
     },
   );
 
-  it.each([["not a palindrome", "not a palindrome is not a palindrome"]])(
+  it.each([
+    ["not a palindrome", "not a palindrome is not a palindrome"],
+    ["nope", "nope is not a palindrome"],
+    ["almostomla", "almostomla is not a palindrome"],
+    ["1 eye for of 1 eye.", "1 eye for of 1 eye. is not a palindrome"],
+    ["five|_/|four", "five|_/|four is not a palindrome"],
+  ])(
     'When the #text-input element contains the text %s and the #check-btn element is clicked, the #result element should contain the text "%s is not a palindrome"',
     async (typed, expected) => {
       const user = userEvent.setup();
-      // const alertSpy = vi.spyOn(window, "alert");
 
       render(<Palindrome />);
 
@@ -85,34 +90,10 @@ describe("Palindrome", () => {
       await act(async () => {
         await user.type(textInput, typed);
         await user.click(checkBtn);
-        console.log("after click: ", textInput.value);
       });
 
       const result = screen.getByTestId("result");
-      screen.debug();
-      console.log("result", result.textContent);
       expect(result.textContent).toBe(expected);
     },
-  );
-
-  it.todo(
-    'When the #text-input element contains the text not a palindrome and the #check-btn element is clicked, the #result element should contain the text "not a palindrome is not a palindrome"',
-  );
-
-  it.todo(
-    'When the #text-input element contains the text nope and the #check-btn element is clicked, the #result element should contain the text "nope is not a palindrome"',
-  );
-  it.todo(
-    'When the #text-input element contains the text almostomla and the #check-btn element is clicked, the #result element should contain the text "almostomla is not a palindrome"',
-  );
-
-  it.todo(
-    'When the #text-input element contains the text 1 eye for of 1 eye. and the #check-btn element is clicked, the #result element should contain the text "1 eye for of 1 eye. is not a palindrome"',
-  );
-  it.todo(
-    'When the #text-input element contains the text 0_0 (: /- :) 0-0 and the #check-btn element is clicked, the #result element should contain the text "0_0 (: /- :) 0-0 is a palindrome"',
-  );
-  it.todo(
-    'When the #text-input element contains the text five|_/|four and the #check-btn element is clicked, the #result element should contain the text "five|_/|four is not a palindrome"',
   );
 });
