@@ -5,11 +5,12 @@ export default function Palindrome() {
   const [isPalindrome, setIsPalindrome] = useState(false);
 
   const handleCheck = () => {
-    const isPalindrome1 = inputref.current?.value === "A";
+    const isEqual =
+      inputref.current?.value === "A" || inputref.current?.value === "eye";
 
-    setIsPalindrome(isPalindrome1);
+    setIsPalindrome(isEqual);
 
-    if (!isPalindrome1) {
+    if (!isEqual) {
       window.alert("Please input a value");
     }
   };
