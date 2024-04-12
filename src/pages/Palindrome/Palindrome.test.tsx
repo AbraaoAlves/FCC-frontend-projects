@@ -46,6 +46,7 @@ describe("Palindrome", () => {
       "A man, a plan, a canal. Panama",
       "A man, a plan, a canal. Panama is a palindrome",
     ],
+    ["never odd or even", "never odd or even is a palindrome"],
   ])(
     'When the #text-input element contains the text %s and the #check-btn element is clicked, the #result element should contain the text "%s is a palindrome"',
     async (typed, expected) => {
@@ -72,9 +73,6 @@ describe("Palindrome", () => {
     'When the #text-input element contains the text not a palindrome and the #check-btn element is clicked, the #result element should contain the text "not a palindrome is not a palindrome"',
   );
 
-  it.todo(
-    'When the #text-input element contains the text never odd or even and the #check-btn element is clicked, the #result element should contain the text "never odd or even is a palindrome"',
-  );
   it.todo(
     'When the #text-input element contains the text nope and the #check-btn element is clicked, the #result element should contain the text "nope is not a palindrome"',
   );
