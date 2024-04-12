@@ -36,18 +36,18 @@ describe("Palindrome", () => {
 
     expect(alertSpy).toHaveBeenCalledWith("Please input a value");
   });
-  it("When the #text-input element only contains the letter A and the #check-btn element is clicked, an alert should not appear", () => {
+  it("When the #text-input element only contains the letter A and the #check-btn element is clicked, an alert should not appear", async () => {
+    const user = userEvent.setup();
     // spy on window.alert
     const alertSpy = vi.spyOn(window, "alert");
     render(<Palindrome />);
 
-    act(() => {
-      userEvent.type(screen.getByRole("textbox"), "A");
-      screen.getByRole("button").click();
-    });
+    await act(() => user.type(screen.getByRole("textbox"), "A"));
+    act(() => screen.getByRole("button").click());
 
     expect(alertSpy).not.toHaveBeenCalledWith();
   });
+
   it.todo(
     'When the #text-input element only contains the letter A and the #check-btn element is clicked, the #result element should contain the text "A is a palindrome"',
   );
