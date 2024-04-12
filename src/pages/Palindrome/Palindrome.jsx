@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { checkIsPalindrome } from "./utils";
 
 export default function Palindrome() {
   const inputref = useRef(/** @type {HTMLInputElement | null} */ (null));
@@ -29,24 +30,5 @@ export default function Palindrome() {
         </div>
       </section>
     </>
-  );
-}
-
-/**
- *
- * @param {string} [value='']
- * @returns {boolean}
- */
-function checkIsPalindrome(value = "") {
-  const valueToCompare = value
-    .replace(/_/g, "")
-    .replace(/ /g, "")
-    .replace(/\./g, "")
-    .replace(/,/g, "")
-    .toLowerCase();
-
-  return (
-    valueToCompare.length > 0 &&
-    valueToCompare === valueToCompare.split("").reverse().join("")
   );
 }
