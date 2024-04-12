@@ -36,72 +36,33 @@ describe("Palindrome", () => {
 
     expect(alertSpy).toHaveBeenCalledWith("Please input a value");
   });
-  describe("When the #text-input element only contains the letter A and the #check-btn element is clicked, ", () => {
-    it(" an alert should not appear", async () => {
+
+  it.each([
+    ["A", "A is a palindrome"],
+    ["eye", "eye is a palindrome"],
+    ["_eye", "_eye is a palindrome"],
+  ])(
+    'When the #text-input element contains the text %s and the #check-btn element is clicked, the #result element should contain the text "%s is a palindrome"',
+    async (typed, expected) => {
       const user = userEvent.setup();
-      // spy on window.alert
       const alertSpy = vi.spyOn(window, "alert");
+
       render(<Palindrome />);
 
       const textInput = screen.getByRole("textbox");
       const checkBtn = screen.getByRole("button");
 
       await act(async () => {
-        await user.type(textInput, "A");
-        await user.click(checkBtn);
-      });
-
-      expect(alertSpy).not.toHaveBeenCalledWith();
-    });
-
-    it(' the #result element should contain the text "A is a palindrome"', async () => {
-      const user = userEvent.setup();
-      render(<Palindrome />);
-
-      const textInput = screen.getByRole("textbox");
-      const checkBtn = screen.getByRole("button");
-
-      await act(async () => {
-        await user.type(textInput, "A");
+        await user.type(textInput, typed);
         await user.click(checkBtn);
       });
 
       const result = screen.getByTestId("result");
-      expect(result.textContent).toBe("A is a palindrome");
-    });
-  });
+      expect(result.textContent).toBe(expected);
+      expect(alertSpy).not.toHaveBeenCalledWith();
+    },
+  );
 
-  it('When the #text-input element contains the text eye and the #check-btn element is clicked, the #result element should contain the text "eye is a palindrome"', async () => {
-    const user = userEvent.setup();
-    render(<Palindrome />);
-
-    const textInput = screen.getByRole("textbox");
-    const checkBtn = screen.getByRole("button");
-
-    await act(async () => {
-      await user.type(textInput, "eye");
-      await user.click(checkBtn);
-    });
-
-    const result = screen.getByTestId("result");
-    expect(result.textContent).toBe("eye is a palindrome");
-  });
-
-  it('When the #text-input element contains the text _eye and the #check-btn element is clicked, the #result element should contain the text "_eye is a palindrome"', async () => {
-    const user = userEvent.setup();
-    render(<Palindrome />);
-
-    const textInput = screen.getByRole("textbox");
-    const checkBtn = screen.getByRole("button");
-
-    await act(async () => {
-      await user.type(textInput, "_eye");
-      await user.click(checkBtn);
-    });
-
-    const result = screen.getByTestId("result");
-    expect(result.textContent).toBe("_eye is a palindrome");
-  });
   it.todo(
     'When the #text-input element contains the text race car and the #check-btn element is clicked, the #result element should contain the text "race car is a palindrome"',
   );
