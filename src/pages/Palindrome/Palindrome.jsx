@@ -38,7 +38,7 @@ export default function Palindrome() {
  * @returns {boolean}
  */
 function checkIsPalindrome(value = "") {
-  const valueToCompare = value.replace(/_/g, "");
+  const valueToCompare = value.replace(/_/g, "").replace(/ /g, "");
   return (
     valueToCompare.length > 0 &&
     valueToCompare === valueToCompare.split("").reverse().join("")
