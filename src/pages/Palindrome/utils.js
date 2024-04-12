@@ -29,11 +29,19 @@ export function getPalindrome(value = "") {
   let right = chars.length - 1;
 
   while (left < right) {
-    let temp = chars[left];
-    chars[left] = chars[right];
-    chars[right] = temp;
-    left++;
-    right--;
+    if ("()".includes(chars[left])) {
+      // ignoring special character
+      left++;
+    } else if ("()".includes(chars[right])) {
+      // ignoring special character
+      right--;
+    } else {
+      let temp = chars[left];
+      chars[left] = chars[right];
+      chars[right] = temp;
+      left++;
+      right--;
+    }
   }
 
   return chars.join("");

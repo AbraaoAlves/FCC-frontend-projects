@@ -48,6 +48,7 @@ describe("Palindrome", () => {
     ],
     ["never odd or even", "never odd or even is a palindrome"],
     ["My age is 0, 0 si ega ym.", "My age is 0, 0 si ega ym. is a palindrome"],
+    ["0_0 (: /- :) 0-0", "0_0 (: /- :) 0-0 is a palindrome"],
   ])(
     'When the #text-input element contains the text %s and the #check-btn element is clicked, the #result element should contain the text "%s is a palindrome"',
     async (typed, expected) => {
